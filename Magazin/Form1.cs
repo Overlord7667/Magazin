@@ -51,9 +51,9 @@ namespace Magazin
         private void button3_Click(object sender, EventArgs e)
         {
             MagazinDB context = new MagazinDB();
-
+            string x = dataGridView1[0, dataGridView1.CurrentCell.RowIndex].Value.ToString();
             MagazinModel magazinModel = (from Magazin in context.MagazinModels
-                                         where Magazin.Name.Contains(dataGridView1.CurrentCell.Value.ToString())
+                                         where Magazin.Name.Contains(x)
                                          select Magazin).FirstOrDefault();
             context.MagazinModels.Remove(magazinModel);
             context.SaveChanges();
